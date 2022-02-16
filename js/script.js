@@ -9,7 +9,7 @@ function getIncomeAndExpensesNumber(id){
 }
 
 
-// setting total expenses by useing function
+// setting total expenses by useing function and error message setting
 function getTotalExpensesAndBalance(){
     //  calling function to get value
     const foodCost = getIncomeAndExpensesNumber('food-cost');
@@ -19,6 +19,7 @@ function getTotalExpensesAndBalance(){
     const income = getIncomeAndExpensesNumber('income');
     const extraCostError = document.getElementById('extra-cost-input-error');
     const incomeError = document.getElementById('income-error');
+    const dataTypeErr = document.getElementById('cost-datatype-error');
 
     const totalExpense = document.getElementById('total-expenses');
     //  summation of expenses
@@ -28,7 +29,7 @@ function getTotalExpensesAndBalance(){
     const balanceId = document.getElementById('balance');
     const balance = income - totalExpenses;
 
-
+// There are some error message in this following condition below 
     //  expenses can not be greatter than income
     if(totalExpenses > income){
         extraCostError.classList.remove('d-none');
@@ -36,14 +37,22 @@ function getTotalExpensesAndBalance(){
             // input must be a positive number
     else if(income < 0){
         incomeError.classList.remove('d-none');
+
     }
     //  if income is greatter or equal to expenses
-    else{
+    else if (foodCost >=0 && rentCost >= 0 && clothesCost >= 0){
         totalExpense.innerText = totalExpenses;
         balanceId.innerText = balance;
         extraCostError.classList.add('d-none');
         incomeError.classList.add('d-none');
+        dataTypeErr.classList.add('d-none');
+
+    }else{
+        dataTypeErr.classList.remove('d-none');
+        extraCostError.classList.add('d-none');
+        incomeError.classList.add('d-none');
     }
+
 }
 
 
@@ -65,6 +74,8 @@ function saveMoney(){
     //  saving input value have to be a positive number
     if(saveRate < 0){
         saveInputError.classList.remove('d-none')
+        extraSaveError.classList.add('d-none')
+
     }
 
     else if(saveRate <= 100){
@@ -74,6 +85,7 @@ function saveMoney(){
     //  saving amount can't be more than balance amount
     else{
         extraSaveError.classList.remove('d-none')
+        saveInputError.classList.add('d-none')
 
     }
 }
