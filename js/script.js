@@ -3,15 +3,9 @@
 function getIncomeAndExpensesNumber(id){
     const itemId = document.getElementById(id);
     const itemValue = parseInt(itemId.value);
-    const typeError = document.getElementById('cost-input-error');
-
-    if(itemId.value < 0){
-        typeError.classList.remove('d-none');
-    }
-    else{
-        typeError.classList.add('d-none');
+    // const typeError = document.getElementById('cost-input-error');
         return itemValue;
-    }
+   
 }
 
 
@@ -89,8 +83,25 @@ function saveMoney(){
 //  clicking the calculation button
 document.getElementById('calculate-btn').addEventListener('click', function(){
     getTotalExpensesAndBalance();
+    errorMessage();
+
 })
 
 document.getElementById('save-btn').addEventListener('click', function(){
     saveMoney()
 })
+
+
+
+//  expenses input error handle 1
+function errorMessage(){
+    const typeError = document.getElementById("cost-input-error");
+    const dataTypeError = document.getElementById('cost-datatype-error');
+    const foodCost = document.getElementById('food-cost').value;
+    const rentCost = document.getElementById('rent-cost').value;
+    const clothesCost = document.getElementById('clothes-cost').value;
+    if(foodCost < 0 || rentCost < 0 || clothesCost < 0){
+        typeError.classList.remove('d-none')
+    }
+   
+}
