@@ -31,15 +31,16 @@
                     <div class="col-lg-6 col-12 text-center text-white">
                         <!-- main income area -->
                         <h3 class="text-center">Income</h3>
-                        <p>Income: <input class="ms-2 rounded" type="text" name="" id="income"></p>
-                        <p class="text-danger text-center d-none">Income input must be a number!</p>
+                        <p>Income: <input class="ms-2 rounded" type="text" name="" value="0" id="income"></p>
+                        <p class="text-danger text-center d-none" id="income-error">Income input must be a number!</p>
                         <!--  Monthly expenses area -->
                         <h3 class="text-center">Expenses</h3>
-                        <p>Food: <input class="ms-2 rounded" type="text" name="" id="food-cost"></p>
-                        <p>Rent: <input class="ms-2 rounded" type="text" name="" id="rent-cost"></p>
-                        <p>Clothes: <input class="ms-2 rounded" type="text" name="" id="clothes-cost"></p>
+                        <p>Food: <input class="ms-2 rounded" type="text" name="" value="0" id="food-cost"></p>
+                        <p>Rent: <input class="ms-2 rounded" type="text" name="" value="0" id="rent-cost"></p>
+                        <p>Clothes: <input class="ms-2 rounded" type="text" name="" value="0" id="clothes-cost"></p>
 
-                        <p class="text-danger text-center d-none">Input must be a Number</p>
+                        <p id="cost-input-error" class="text-danger text-center d-none">Input must be a Positive Number</p>
+                        <p id="extra-cost-input-error" class="text-danger text-center d-none">Sorry! Expenses can't be greater than Income</p>
                         <!-- calculate button  -->
                         <button class="btn btn-primary px-5 mb-4" id="calculate-btn">Calculate</button>
 
@@ -49,7 +50,8 @@
 
                         <!-- saving area  -->
                         <p>Save: <input class="ms-2 rounded" type="text" name="" id="save-rate"> % <button class="btn btn-primary px-5" id="save-btn">Save</button></p>
-                        <p class="text-danger text-center d-none">Saving Input must be a Number</p>
+                        <p class="text-danger text-center d-none" id="save-input-error">Saving Input must be a Positive Number</p>
+                        <p class="text-danger text-center d-none" id="extra-save-error">You can't save more than 100% of your money!</p>
 
                         <h3>Saving Amount: <span id="saving-amount">0</span></h3>
                         <h3>Remaining Balance: <span id="remaining-balance">0</span></h3>
